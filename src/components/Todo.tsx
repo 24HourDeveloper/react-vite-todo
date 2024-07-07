@@ -13,7 +13,7 @@ type Item = {
 export default function TodoItem({ item }: Item) {
   const { deleteTodo, completeTodo } = useStore(state => state)
   return (
-    <Card key={item.id} size="sm" align="flex-start">
+    <Card key={item.id} size="sm" align="flex-start" data-testid="todo-item">
       <CardBody w="100%">
         <Flex justifyContent="space-between" alignItems="center">
           <Flex gap="2">
@@ -22,7 +22,13 @@ export default function TodoItem({ item }: Item) {
               {item.item}
             </Text>
           </Flex>
-          <Button size='sm' variant='ghost' colorScheme='red' onClick={() => deleteTodo(item.id)}>
+          <Button
+            size='sm'
+            variant='ghost'
+            colorScheme='red'
+            data-testid="todo-delete-btn"
+            onClick={() => deleteTodo(item.id)}
+          >
             <DeleteIcon />
           </Button>
         </Flex>
